@@ -1,7 +1,6 @@
 package com.egecius.coordinatorlayout_demo;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +39,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 	}
 
 	@Override public int getItemCount() {
-
-		Log.w("Eg:RecyclerViewAdapter:43", "getItemCount items.size() " + items.size());
-
 		return items.size();
 	}
 
