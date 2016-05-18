@@ -35,10 +35,10 @@ public class ShrinkBehavior extends CoordinatorLayout.Behavior<FloatingActionBut
 	private float getFabTranslationYForSnackbar(CoordinatorLayout parent, FloatingActionButton fab) {
 		float minOffset = 0;
 		final List<View> dependencies = parent.getDependencies(fab);
-		for (int i = 0, z = dependencies.size(); i < z; i++) {
-			final View view = dependencies.get(i);
-			if (view instanceof Snackbar.SnackbarLayout && parent.doViewsOverlap(fab, view)) {
-				minOffset = Math.min(minOffset, ViewCompat.getTranslationY(view) - view.getHeight());
+
+		for (final View dependency : dependencies) {
+			if (dependency instanceof Snackbar.SnackbarLayout && parent.doViewsOverlap(fab, dependency)) {
+				minOffset = Math.min(minOffset, ViewCompat.getTranslationY(dependency) - dependency.getHeight());
 			}
 		}
 
