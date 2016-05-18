@@ -24,13 +24,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		this.onItemClickListener = onItemClickListener;
 	}
 
-	@Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+	@Override
+	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
 		v.setOnClickListener(this);
 		return new ViewHolder(v);
 	}
 
-	@Override public void onBindViewHolder(ViewHolder holder, int position) {
+	@Override
+	public void onBindViewHolder(ViewHolder holder, int position) {
 		ViewModel item = items.get(position);
 		holder.text.setText(item.getText());
 		holder.image.setImageBitmap(null);
@@ -38,12 +40,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 		holder.itemView.setTag(item);
 	}
 
-	@Override public int getItemCount() {
+	@Override
+	public int getItemCount() {
 		return items.size();
 	}
 
-	@Override public void onClick(final View v) {
-		onItemClickListener.onItemClick(v, (ViewModel) v.getTag());
+	@Override
+	public void onClick(final View v) {
+		if (onItemClickListener != null) {
+			onItemClickListener.onItemClick(v, (ViewModel) v.getTag());
+		}
 	}
 
 	protected static class ViewHolder extends RecyclerView.ViewHolder {
