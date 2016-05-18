@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.List;
@@ -25,21 +26,26 @@ public class RotateBehavior extends CoordinatorLayout.Behavior<FloatingActionBut
 	}
 
 	@Override
-	public boolean onDependentViewChanged(CoordinatorLayout parent, FloatingActionButton child, View dependency) {
-		float translationY = getFabTranslationYForSnackbar(parent, child);
+	public boolean onDependentViewChanged(CoordinatorLayout parent, FloatingActionButton fab, View dependency) {
+		float translationY = getFabTranslationYForSnackbar(parent, fab);
+
 		float percentComplete = -translationY / dependency.getHeight();
-		child.setRotation(DEGREES_TO_TURN * percentComplete);
-		child.setTranslationY(translationY);
+		fab.setRotation(DEGREES_TO_TURN * percentComplete);
+		fab.setTranslationY(translationY);
 		return false;
 	}
 
 	private float getFabTranslationYForSnackbar(CoordinatorLayout parent, FloatingActionButton fab) {
 		float minOffset = 0;
 		final List<View> dependencies = parent.getDependencies(fab);
+
 		for (int i = 0, z = dependencies.size(); i < z; i++) {
 			final View view = dependencies.get(i);
 			if (view instanceof Snackbar.SnackbarLayout && parent.doViewsOverlap(fab, view)) {
-				minOffset = Math.min(minOffset, ViewCompat.getTranslationY(view) - view.getHeight());
+				float translationY = ViewCompat.getTranslationY(view);
+
+				int height = view.getHeight();
+				minOffset = Math.min(minOffset, translationY - height);
 			}
 		}
 
