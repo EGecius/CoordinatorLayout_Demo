@@ -38,7 +38,7 @@
         android:layout_gravity="bottom|right|end"
         android:layout_margin="8dp"
         android:src="@drawable/abc_ic_search_api_mtrl_alpha"
-        app:layout_behavior="com.egecius.coordinatorlayout_demo.ShrinkBehavior"/>
+        app:layout_behavior="com.egecius.coordinatorlayout_demo.behaviors.ShrinkBehavior"/>
 
 
     <android.support.design.widget.FloatingActionButton
@@ -48,6 +48,6 @@
         android:layout_gravity="bottom|left|start"
         android:layout_margin="8dp"
         android:src="@drawable/abc_ic_search_api_mtrl_alpha"
-        app:layout_behavior="com.egecius.coordinatorlayout_demo.RotateBehavior"/>
+        app:layout_behavior="com.egecius.coordinatorlayout_demo.behaviors.RotateBehavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.egecius.coordinatorlayout_demo;
+package com.egecius.coordinatorlayout_demo.behaviors;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
