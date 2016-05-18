@@ -40,4 +40,14 @@
         android:src="@drawable/abc_ic_search_api_mtrl_alpha"
         app:layout_behavior="com.egecius.coordinatorlayout_demo.ShrinkBehavior"/>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left|start"
+        android:layout_margin="8dp"
+        android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+        app:layout_behavior="com.egecius.coordinatorlayout_demo.RotateBehavior"/>
+
 </android.support.design.widget.CoordinatorLayout>

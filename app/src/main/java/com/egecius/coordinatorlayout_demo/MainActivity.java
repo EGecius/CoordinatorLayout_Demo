@@ -6,11 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.ViewGroup;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-	private RecyclerView recyclerView;
+	@Bind (R.id.container) ViewGroup container;
+	@Bind (R.id.recycler) RecyclerView recyclerView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,20 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
 	private void initUi() {
 		setContentView(R.layout.activity_main);
+		ButterKnife.bind(this);
 		setToolbar();
 		initRecyclerView();
 		setRecyclerAdapter();
-		setupFab();
 	}
 
-	@SuppressWarnings ("ConstantConditions")
-	private void setupFab() {
-		findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(findViewById(R.id.container), "Hey there!", Snackbar.LENGTH_LONG).show();
-			}
-		});
+	@OnClick ({R.id.fab, R.id.fab2})
+	void onFabClicked() {
+		Snackbar.make(container, "Hey there!", Snackbar.LENGTH_LONG).show();
 	}
 
 	private void setToolbar() {
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void initRecyclerView() {
-		recyclerView = (RecyclerView) findViewById(R.id.recycler);
 		recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
 	}
